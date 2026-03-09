@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import DB_connect from './src/configs/db.js';
 import cloudinary from './src/configs/cloudinary.js';
 import cors from 'cors';
+import router from './src/router/user.route.js';
 dotenv.config();
 
 const app = express();
@@ -29,6 +30,7 @@ async function checkCloudinary() {
 
 app.use(cors());
 app.use(express.json());
+app.use("/user",router)
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port http://localhost:${PORT}`);
